@@ -1,9 +1,11 @@
-package com.novoda.android.date;
+package com.novoda.android.time;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.novoda.android.time.Iso8601DateFormatter;
 
 public class Iso8601DateFormatterTest {
     

@@ -1,9 +1,7 @@
-package com.novoda.android.date;
+package com.novoda.android.time;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import org.joda.time.DateTime;
 
 /**
  * Generic date formatter.
@@ -38,7 +36,11 @@ public class DateFormatter {
      * @return
      */
     public String formatCurrentTime(String format) {
-        return new DateTime().toString(format);
+        if(format == null) {
+            return new Date().toString();
+        }
+        SimpleDateFormat dt = new SimpleDateFormat(format);
+        return dt.format(new Date());
     }
 
 }

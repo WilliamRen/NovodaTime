@@ -1,4 +1,4 @@
-package com.novoda.android.date;
+package com.novoda.android.time;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,7 +20,7 @@ public class DateParserTest {
         assertEquals(1329004800000l, actual, 0.1);
     }
     
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = RuntimeException.class)
     public void SHOULD_toMilliseconds_THROW_IF_dateIsNotValid() {
         dateParser.toMilliseconds("");
     }

@@ -1,4 +1,4 @@
-package com.novoda.android.date;
+package com.novoda.android.time;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,6 +7,8 @@ import java.util.GregorianCalendar;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.novoda.android.time.DateRangeFormatter;
 
 public class DateRangeFormatterTest {
 
@@ -30,6 +32,18 @@ public class DateRangeFormatterTest {
     @Test
     public void SHOULD_formateDateRange_RETURN_emptyString_IF_areNullStrings() {
         String actual = dateFormatter.formatDateRange(null, null);
+        assertEquals("", actual);
+    }
+    
+    @Test
+    public void SHOULD_formateDateRange_NOT_crashWithStrangeStartDate() {
+        String actual = dateFormatter.formatDateRange("akshay", null);
+        assertEquals("", actual);
+    }
+    
+    @Test
+    public void SHOULD_formateDateRange_NOT_crashWithStrangeEndDate() {
+        String actual = dateFormatter.formatDateRange("", "jamie");
         assertEquals("", actual);
     }
 

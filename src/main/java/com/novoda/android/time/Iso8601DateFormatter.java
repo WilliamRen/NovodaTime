@@ -1,6 +1,7 @@
-package com.novoda.android.date;
+package com.novoda.android.time;
 
-import org.joda.time.DateTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Specific date formatter for iso8601 
@@ -29,8 +30,8 @@ public class Iso8601DateFormatter {
      * @return
      */
     public String getFormattedTime(long timeInMills) {
-        DateTime dt = new DateTime(timeInMills);
-        return dt.toString(DATE_FORMAT);
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+        return sdf.format(new Date(timeInMills));
     }
     
 }
