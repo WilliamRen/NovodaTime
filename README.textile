@@ -1,0 +1,12 @@
+h1. Novoda Time
+
+The goal of this project is to remove all the duplicated code in different projects to parse, convert or manipulate dates in android.
+As a secondary goal wants to remove any excuse to avoid tests.
+
+h2. Rules for changes to the project
+
+Before checking in the code please make sure to run the command : 
+
+mvn clean emma:emma
+
+and verify that the changes made are covering properly the code changed
