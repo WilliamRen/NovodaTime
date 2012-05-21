@@ -55,7 +55,6 @@ public class DateFormatterTest {
     public void SHOULD_formatCurrentTime() {
         String actual = dateFormatter.formatCurrentTime("yyyy-MM-dd");
         assertNotNull(actual);
-        assertEquals("2012-05-17", actual);
         assertTrue(actual.matches("\\d\\d\\d\\d-\\d\\d-\\d\\d"));
     }
     
