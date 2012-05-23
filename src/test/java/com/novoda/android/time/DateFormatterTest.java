@@ -2,7 +2,10 @@ package com.novoda.android.time;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -56,6 +59,19 @@ public class DateFormatterTest {
         String actual = dateFormatter.formatCurrentTime("yyyy-MM-dd");
         assertNotNull(actual);
         assertTrue(actual.matches("\\d\\d\\d\\d-\\d\\d-\\d\\d"));
+    }
+    
+    @Test
+    public void SHOULD_formatTime() {
+        String actual = dateFormatter.formatTime(new Date(0l), "yyyy-MM-dd");
+        assertNotNull(actual);
+        assertEquals("1970-01-01", actual);
+    }
+    
+    @Test
+    public void SHOULD_formatTime_RETURN_null_IF_dateIsNull() {
+        String actual = dateFormatter.formatTime(null, "yyyy-MM-dd");
+        assertNull(actual);
     }
     
     @Test

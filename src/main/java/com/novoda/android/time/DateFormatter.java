@@ -30,17 +30,31 @@ public class DateFormatter {
     }
     
     /**
-     * Format current time;
+     * Format current time.
      * 
      * @param format
      * @return
      */
     public String formatCurrentTime(String format) {
+        return formatTime(new Date(), format);
+    }
+    
+    /**
+     * Format time to the format passed as parameter.
+     * 
+     * @param date
+     * @param format
+     * @return
+     */
+    public String formatTime(Date date, String format) {
+        if(date == null) {
+            return null;
+        }
         if(format == null) {
-            return new Date().toString();
+            return date.toString();
         }
         SimpleDateFormat dt = new SimpleDateFormat(format);
-        return dt.format(new Date());
+        return dt.format(date);
     }
 
 }
