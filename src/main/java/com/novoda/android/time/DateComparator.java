@@ -8,6 +8,28 @@ import java.util.Date;
  * Use this class carefully as the interface may change quite a bit.
  */
 public class DateComparator {
+    
+    private int year;
+    private int month;
+    private int day;
+    
+    public DateComparator() {
+        this(Calendar.getInstance().getTime());
+    }
+    
+    public DateComparator(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        this.year = calendar.get(Calendar.YEAR); 
+        this.month = calendar.get(Calendar.MONTH);
+        this.day = calendar.get(Calendar.DAY_OF_MONTH);
+    }
+    
+    public DateComparator(int year, int month, int day) {
+        this.year = year; 
+        this.month = month;
+        this.day = day;
+    }
 
     /**
      * Return true if the date is in the past.
@@ -36,21 +58,17 @@ public class DateComparator {
      * @return
      */
     public boolean isPastDate(int year, int month, int day) {
-        Calendar calendar = Calendar.getInstance();
-        int currentYear = calendar.get(Calendar.YEAR); 
-        if(currentYear > year) {
+        if(this.year > year) {
             return true;
-        } else if (currentYear < year) {
+        } else if (this.year < year) {
             return false;
         }
-        int currentMonth = calendar.get(Calendar.MONTH);
-        if(currentMonth > month) {
+        if(this.month > month) {
             return true;
-        } else if (currentMonth < month) {
+        } else if (this.month < month) {
             return false;
         }
-        int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
-        if(currentDay > day) {
+        if(this.day > day) {
             return true;
         }
         return false; 

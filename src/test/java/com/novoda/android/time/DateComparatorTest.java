@@ -9,10 +9,6 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * TODO test are not very flexible I need to change the DateComparator
- * to receive the date as a dependency so it can be tested properly.
- */
 public class DateComparatorTest {
     
     private DateComparator dateComparator;
@@ -22,11 +18,10 @@ public class DateComparatorTest {
     
     @Before
     public void before() {
-        dateComparator = new DateComparator();
-        Calendar calendar = Calendar.getInstance();
-        year = calendar.get(Calendar.YEAR); 
-        month = calendar.get(Calendar.MONTH);
-        day = calendar.get(Calendar.DAY_OF_MONTH);
+        year = 2012; 
+        month = 5;
+        day = 23;
+        dateComparator = new DateComparator(year, month, day);
     }
     
     @Test
@@ -78,6 +73,8 @@ public class DateComparatorTest {
     @Test
     public void isPastDate_SHOULD_returnFalse_IF_dateIsToday_GIVEN_aDate() {
         Calendar calendar = Calendar.getInstance();
+        calendar.clear();
+        calendar.set(year, month, day);
         assertFalse(dateComparator.isPastDate(calendar.getTime()));
     }
     
@@ -95,6 +92,12 @@ public class DateComparatorTest {
     @Test
     public void isPastDate_SHOULD_returnFalse_IF_dateIsInvalid() {
         assertFalse(dateComparator.isPastDate(23200, 23, 23));
+    }
+    
+    @Test
+    public void dateComparator_SHOULD_useTheCurrentDateAsDefaultConstructor(){
+        dateComparator = new DateComparator();
+        assertFalse(dateComparator.isPastDate(new Date()));
     }
 
 }
